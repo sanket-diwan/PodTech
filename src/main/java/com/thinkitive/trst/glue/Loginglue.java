@@ -1,12 +1,14 @@
+package com.thinkitive.trst.glue;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
+
 
 public class Loginglue {
 
@@ -29,10 +31,12 @@ public class Loginglue {
     }
 
     @Then("User should be logged in and dashboard page should be displayed")
-    public void userShouldBeLoggedInAndDashboardPageShouldBeDisplayed() {
+    public void userShouldBeLoggedInAndDashboardPageShouldBeDisplayed() throws Throwable {
         String ActualUrl=driver.getCurrentUrl();
         String ExpectedUrl="https://qa.trsthealth.com/login";
         Assert.assertEquals(ActualUrl,ExpectedUrl);
+        Thread.sleep(3000);
+        driver.quit();
     }
 
 
